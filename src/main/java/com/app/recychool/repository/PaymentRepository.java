@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
-
-    Optional<Payment> findByPaymentUid(String paymentUid);
-
+    boolean existsByImpUid(String impUid);
+    boolean existsByReserve_Id(Long reserveId);
+    Optional<Payment> findByReserve_Id(Long reserveId);
 }

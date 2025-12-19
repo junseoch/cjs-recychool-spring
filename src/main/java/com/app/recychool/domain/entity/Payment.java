@@ -26,13 +26,21 @@ public class Payment {
     @EqualsAndHashCode.Include
     private Long id;
     private Integer paymentPrice;
-    private String paymentUid;
-    private String paymentPortOneNumber;
+
+    @Column(name = "IMP_UID", nullable = false, unique = true)
+    private String impUid;
+
+    @Column(name = "MERCHANT_UID", nullable = false)
+    private String merchantUid;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private PaymentStatus paymentStatus;
+
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private PaymentType paymentType;
+
 
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "RESERVE_ID")

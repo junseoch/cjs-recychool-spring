@@ -1,6 +1,5 @@
 package com.app.recychool.domain.dto;
 
-import com.app.recychool.domain.type.PaymentStatus;
 import com.app.recychool.domain.type.PaymentType;
 import lombok.*;
 
@@ -10,11 +9,12 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentCompleteResponseDTO {
+public class PaymentCompleteRequestDTO {
 
-    private Long paymentId;
     private Long reserveId;
-    private PaymentStatus paymentStatus;
-    private Integer amount;
+    private String impUid;
+    private String merchantUid;
+    private PaymentType paymentType;
+
 
 }
