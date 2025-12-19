@@ -217,7 +217,6 @@ public class AuthServiceImpl implements AuthService {
       if ("naver".equals(reg))  result =  (String) ((Map<?,?>) attrs.get("response")).get("email");
       if ("kakao".equals(reg))  result =  (String) ((Map<?,?>) attrs.get("kakao_account")).get("email");
     }
-
     return result;
   }
 }

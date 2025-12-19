@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,4 +42,13 @@ public class UserAuthApi {
         return currentUser;
     }
 
+    @PostMapping("logout")
+    public ResponseEntity<ApiResponseDTO> logout(Authentication authentication){
+
+//        로그아웃 시 블랙리스트에 토큰 등록 + 현재 로그인에서 로그인 상태 업데이트
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponseDTO.of("로그아웃 성공"));
+
+    }
 }

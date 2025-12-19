@@ -33,4 +33,5 @@ public interface AuthService {// 로그인 -> 성공 시 토큰(AccessToken, Ref
 //  토큰으로 이메일 가져오기
   public String getUserEmailFromAuthentication(Authentication authentication);
 
+//  로그인 시 기존 로그인 확인
 }

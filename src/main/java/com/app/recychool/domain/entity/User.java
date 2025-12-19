@@ -31,19 +31,20 @@ public class User {
     private String userPhone;
     private String userPassword;
     private String userProvider;
-    @Column(unique = true)
+
+    @Column(name = "user_is_login", nullable = true)
+    private Boolean userIsLogin;
+
     private String userIdentityKey;
-
-    private LocalDateTime userIdentityVerifiedAt;
-
+    
     @Enumerated(EnumType.STRING)
     private IdentityProvider userIdentityProvider;
-
+    
+    private LocalDateTime userIdentityVerifiedAt;
 
     @JoinColumn(name = "USER_SOCIAL_ID")
     @OneToOne
     private UserSocial userSocial;
-
 
     public User(UserInsertSocial userInsertSocial) {
         this.id = userInsertSocial.getId();
