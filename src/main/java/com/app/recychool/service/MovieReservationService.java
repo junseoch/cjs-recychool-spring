@@ -1,6 +1,7 @@
 package com.app.recychool.service;
 
 import com.app.recychool.domain.entity.MovieReservation;
+import com.app.recychool.domain.entity.School;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,9 @@ public interface MovieReservationService {
 
     // 학교별 예매 수 확인
     public long getCountBySchoolId(Long schoolId);
+
+    public List<School> getMovieSchools();
+
 
     // 마이 예약 확인
     public List<MovieReservation> getMyReservations(Long userId);

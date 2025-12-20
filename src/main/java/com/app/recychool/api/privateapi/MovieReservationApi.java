@@ -39,6 +39,14 @@ public class MovieReservationApi {
         return ResponseEntity.ok(ApiResponseDTO.of("잔여 좌석 조회 성공", count));
     }
 
+    @GetMapping("/movie-schools")
+    public ResponseEntity<ApiResponseDTO> getMovieSchools() {
+        return ResponseEntity.ok(ApiResponseDTO.of(
+                "영화 학교 목록 조회 성공",
+                movieReservationService.getMovieSchools()
+        ));
+    }
+
     // 마이예약
     @GetMapping("/my/{userId}")
     public ResponseEntity<ApiResponseDTO> getMyReservations(@PathVariable Long userId) {
