@@ -63,7 +63,21 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public PaymentPageResponseDTO getReserve(Long reserveId) {
-        return null;
+
+        Reserve reserve = reserveRepository.findById(reserveId).orElseThrow(()
+                -> new IllegalArgumentException("예약이 존재하지 않습니다"));
+
+        return new PaymentPageResponseDTO(
+                reserve.getId(),
+                reserve.getReserveType().name(),
+                reserve.getStartDate().toString(),
+                reserve.getReservePrice(), // amount
+                reserve.getUser().getUserName(),
+                reserve.getUser().getUserEmail(),
+                reserve.getUser().getUserPhone(),
+                reserve.getSchool().getSchoolName(),
+                reserve.getSchool().getSchoolAddress()
+        );
     }
 
 
