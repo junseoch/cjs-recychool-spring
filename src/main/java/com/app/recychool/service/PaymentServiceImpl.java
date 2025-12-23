@@ -8,6 +8,7 @@ import com.app.recychool.domain.entity.Reserve;
 import com.app.recychool.domain.enums.ReserveStatus;
 import com.app.recychool.domain.enums.ReserveType;
 import com.app.recychool.domain.type.PaymentStatus;
+import com.app.recychool.exception.PaymentAlreadyProcessedException;
 import com.app.recychool.repository.PaymentRepository;
 import com.app.recychool.repository.ReserveRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,20 +36,20 @@ public class PaymentServiceImpl implements PaymentService {
         // 장소 대여: 예약 1건당 결제 1건만 허용
         if (reserve.getReserveType() == ReserveType.PLACE) {
             if (paymentRepository.existsByReserve_Id(reserve.getId())) {
-                throw new IllegalStateException("이미 결제가 완료된 장소 대여 예약입니다.");
+                throw new PaymentAlreadyProcessedException("이미 결제가 완료된 장소 대여 예약입니다.");
             }
         }
 
         // 주차 예약: 연장 결제(isExtend=true)가 아닌 경우만 중복 차단
         if (reserve.getReserveType() == ReserveType.PARKING && !requestDTO.isExtend()) {
             if (paymentRepository.existsByReserve_Id(reserve.getId())) {
-                throw new IllegalStateException("이미 결제가 완료된 주차 예약입니다.");
+                throw new PaymentAlreadyProcessedException("이미 결제가 완료된 주차 예약입니다.");
             }
         }
 
         // 3) impUid 중복 차단 (모든 결제 공통)
         if (paymentRepository.existsByImpUid(requestDTO.getImpUid())) {
-            throw new IllegalStateException("이미 처리된 결제입니다. impUid=" + requestDTO.getImpUid());
+            throw new PaymentAlreadyProcessedException("이미 처리된 결제입니다. impUid=" + requestDTO.getImpUid());
         }
 
         // 4) 결제 저장
