@@ -25,7 +25,7 @@ class MovieRepositoryTest {
         movie1.setMovieTime("18:00~ 19:41");
         movie1.setMoviePeopleAll(30);
         movie1.setMovieTitle("코렐라인");
-        movie1.setMovieStartDate(LocalDateTime.of(2025, 12, 18, 0, 0, 0));        movieRepository.save(movie1);
+        movie1.setMovieStartDate(LocalDateTime.of(2025, 12, 27, 0, 0, 0));
         movieRepository.save(movie1);
     }
 
@@ -35,8 +35,7 @@ class MovieRepositoryTest {
         movie1.setMovieTime("18:00~ 19:41");
         movie1.setMoviePeopleAll(30);
         movie1.setMovieTitle("주토피아");
-        movie1.setMovieStartDate(LocalDateTime.of(2026, 2, 21, 0, 0, 0));        movieRepository.save(movie1);
-        movieRepository.save(movie1);
+        movie1.setMovieStartDate(LocalDateTime.of(2026, 2, 21, 0, 0, 0));
     }
 
 
