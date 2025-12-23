@@ -42,7 +42,7 @@ public class Payment {
     private PaymentType paymentType;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESERVE_ID")
     private Reserve reserve;
 
